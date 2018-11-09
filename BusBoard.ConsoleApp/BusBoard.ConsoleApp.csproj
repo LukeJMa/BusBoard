@@ -48,8 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusPrediction.cs" />
+    <Compile Include="LongLat.cs" />
+    <Compile Include="PostcodeResponse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StopPoint.cs" />
+    <Compile Include="StopsResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
