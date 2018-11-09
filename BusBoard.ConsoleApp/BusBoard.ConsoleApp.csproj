@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiAccessor.cs" />
     <Compile Include="BusPrediction.cs" />
+    <Compile Include="IOHandler.cs" />
     <Compile Include="LongLat.cs" />
     <Compile Include="PostcodeResponse.cs" />
     <Compile Include="Program.cs" />
