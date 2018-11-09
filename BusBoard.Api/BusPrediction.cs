@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Net;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
     public class BusPrediction : IComparable<BusPrediction>
     {

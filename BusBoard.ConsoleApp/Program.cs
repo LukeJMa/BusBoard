@@ -1,4 +1,5 @@
 ﻿using System;
+using BusBoard.Api;
 
 namespace BusBoard.ConsoleApp
 {

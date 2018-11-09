@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using RestSharp;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
     public class ApiAccessor
     {
