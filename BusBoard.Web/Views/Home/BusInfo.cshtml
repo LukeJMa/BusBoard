@@ -1,18 +1,18 @@
 ﻿@model BusBoard.Web.ViewModels.BusInfo
 @{
-  ViewBag.Title = "Bus Information";
+    ViewBag.Title = "Bus Information";
 }
 
 <h2>BusInfo</h2>
-
+<script>setTimeout("location.reload(true);", 30000);</script>
 <div class="row">
-    <p>You entered postcode @Model.PostCode</p>
+    <marquee>You entered postcode @Model.PostCode</marquee>
     @for (var i = 0; i < Model.Stops.Count; i++)
     {
-    <p>Next buses at: @Model.Stops[i].commonName @Model.Stops[i].indicator</p>
+        <marquee>Next buses at: @Model.Stops[i].commonName @Model.Stops[i].indicator</marquee>
         foreach (var busPrediction in Model.Stops[i].NextBuses)
         {
-            <p>@busPrediction.ToString()</p>
+            <marquee>@busPrediction.ToString()</marquee>
         }
     }
 </div>

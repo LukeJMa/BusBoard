@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 using BusBoard.Api;
 using BusBoard.Web.Models;
 using BusBoard.Web.ViewModels;
@@ -16,7 +18,16 @@ namespace BusBoard.Web.Controllers
     public ActionResult BusInfo(PostcodeSelection selection)
     {
       var apiAccessor = new ApiAccessor();
-      var stops = apiAccessor.GetStopsByPostcode(selection.Postcode);
+        List<StopPoint> stops = new List<StopPoint>();
+        try
+        {
+            stops = apiAccessor.GetStopsByPostcode(selection.Postcode);
+        }
+        catch
+        {
+            return this.ErrorPage();
+        }
+      
       var info = new BusInfo(selection.Postcode);
       for (var i = 0; i < 2 && i < stops.Count; i++)
       {
@@ -40,5 +51,12 @@ namespace BusBoard.Web.Controllers
 
       return View();
     }
-  }
+
+      public ActionResult ErrorPage()
+      {
+          ViewBag.Message = "Error!";
+
+          return View();
+      }
+    }
 }
