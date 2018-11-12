@@ -2,7 +2,7 @@
 
 namespace BusBoard.Api
 {
-    public class StopsResponse
+    public class PostcodeStopsResponse
     {
         public List<StopPoint> stopPoints { get; set; }
     }

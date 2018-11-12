@@ -9,9 +9,8 @@ namespace BusBoard.ConsoleApp
     {
         var apiAccessor = new ApiAccessor();
 
-        var input = IOHandler.GetPostcode();
-
-        var stops = apiAccessor.GetStopsByPostcode(input);
+        var input = IOHandler.GetCommonName();
+        var stops = apiAccessor.GetStopIDByName(input);
             
         for (var i = 0; i < 2 && i < stops.Count; i++)
         {

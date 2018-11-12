@@ -23,5 +23,10 @@ namespace BusBoard.ConsoleApp
                 Console.WriteLine(busArrivals[j].ToString());
             }
         }
+
+        public static string GetCommonName()
+        {
+            return Console.ReadLine();
+        }
     }
 }
