@@ -15,20 +15,13 @@ namespace BusBoard.Web.Controllers
     }
 
     [HttpGet]
-    public ActionResult BusInfo(PostcodeSelection selection)
+    public ActionResult PostcodeBusInfo(Selection selection)
     {
       var apiAccessor = new ApiAccessor();
-        List<StopPoint> stops = new List<StopPoint>();
-        try
-        {
-            stops = apiAccessor.GetStopsByPostcode(selection.Postcode);
-        }
-        catch
-        {
-            return this.ErrorPage();
-        }
+      List<StopPoint> stops = new List<StopPoint>();
+      stops = apiAccessor.GetStopsByPostcode(selection.Postcode);
       
-      var info = new BusInfo(selection.Postcode);
+      var info = new PostcodeBusInfo(selection.Postcode);
       for (var i = 0; i < 2 && i < stops.Count; i++)
       {
           var buses = apiAccessor.GetNextBuses(stops[i]);
@@ -58,5 +51,21 @@ namespace BusBoard.Web.Controllers
 
           return View();
       }
-    }
+
+      public ActionResult StopNameBusInfo(Selection selection)
+      {
+      var apiAccessor = new ApiAccessor();
+      List<StopPoint> stops = new List<StopPoint>();
+      stops = apiAccessor.GetStopsByName(selection.StopName);
+
+      var info = new StopNameBusInfo(selection.StopName);
+      for (var i = 0; i < 2 && i < stops.Count; i++)
+      {
+          var buses = apiAccessor.GetNextBuses(stops[i]);
+          info.AddStop(stops[i], buses);
+      }
+
+      return View(info);
+      }
+  }
 }

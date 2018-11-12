@@ -1,4 +1,4 @@
-﻿@model BusBoard.Web.ViewModels.BusInfo
+﻿@model BusBoard.Web.ViewModels.PostcodeBusInfo
 @{
     ViewBag.Title = "Bus Information";
 }
@@ -6,7 +6,7 @@
 <h2>BusInfo</h2>
 <script>setTimeout("location.reload(true);", 30000);</script>
 <div class="row">
-    <marquee>You entered postcode @Model.PostCode</marquee>
+    <marquee>You entered postcode @Model.Postcode</marquee>
     @for (var i = 0; i < Model.Stops.Count; i++)
     {
         <marquee>Next buses at: @Model.Stops[i].commonName @Model.Stops[i].indicator</marquee>

@@ -1,4 +1,4 @@
-﻿@model BusBoard.Web.Models.PostcodeSelection
+﻿@model BusBoard.Web.Models.Selection
 @{
     ViewBag.Title = "Home Page";
 }
@@ -10,14 +10,26 @@
 
 <div class="row">
     <div class="col-md-12">
-        @using (Html.BeginForm("BusInfo", "Home", FormMethod.Get))
+        @using (Html.BeginForm("PostcodeBusInfo", "Home", FormMethod.Get))
         {
-        <fieldset>
-            <legend>Post Code:</legend>
-            @Html.TextBoxFor(m => m.Postcode)
+            <fieldset>
+                <legend>Post Code:</legend>
+                @Html.TextBoxFor(m => m.Postcode)
+                <input type="submit" value="Get Bus Info" />
+            </fieldset>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("StopNameBusInfo", "Home", FormMethod.Get))
+        {
+            <fieldset>
+                <legend>Stop Name:</legend>
+                @Html.TextBoxFor(m => m.StopName)
 
-            <input type="submit" value="Get Bus Info" />
-        </fieldset>
+                <input type="submit" value="Get Bus Info" />
+            </fieldset>
         }
     </div>
 </div>

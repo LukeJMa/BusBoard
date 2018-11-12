@@ -46,7 +46,7 @@ namespace BusBoard.Api
             return TflClient.Execute<PostcodeStopsResponse>(stopsRequest).Data.stopPoints;
         }
 
-        public List<StopPoint> GetStopIDByName(string name)
+        public List<StopPoint> GetStopsByName(string name)
         {
 
             var stopsRequest = new RestRequest();
@@ -57,38 +57,11 @@ namespace BusBoard.Api
             {
                 var stopIdRequest = new RestRequest();
                 stopIdRequest.Resource = "StopPoint/" + x.id + "?app_id=" + Keys[0] + "&app_key=" + Keys[1];
-                var stopIdResponse = TflClient.Execute<StopIdResponse>(stopIdRequest).Data;
-                foreach (var y in stopIdResponse.lineGroup)
-                {
-                    var stop = new StopPoint();
-                    stop.naptanId = y.naptanIdReference;
-                    stops.Add(stop);
-                }
+                return TflClient.Execute<StopIdResponse>(stopIdRequest).Data.children;
+
             }
 
             return stops;
         }
-    }
-
-    public class CommonNameStopResponse
-    {
-        public List<StopId> matches { get; set; } 
-
-    }
-
-    public class StopId
-    {
-        // ReSharper disable once InconsistentNaming
-        public string id { get; set; }
-    }
-
-    public class StopIdResponse
-    {
-        public List<NaptanStopId> lineGroup { get; set; }
-    }
-
-    public class NaptanStopId
-    {
-        public string naptanIdReference { get; set; }
     }
 }
